@@ -3,9 +3,11 @@ class Game
   def initialize
     @number_of_players = 0
     @players_1_and_2 = []
+    @ready = false
   end
 
   def ready?
+    @ready = true if (@players_1_and_2.length >= 2)
   end
 
   def over?
