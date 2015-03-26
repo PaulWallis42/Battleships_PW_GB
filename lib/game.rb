@@ -32,6 +32,10 @@ class Game
   end
 
   def switch_turns
-    @players_1_and_2.reverse
+    @players_1_and_2 = @players_1_and_2.reverse
+  end
+
+  def shoot
+    switch_turns
   end
 end

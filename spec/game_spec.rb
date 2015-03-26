@@ -48,28 +48,41 @@ end
   end
 
   it 'Can switch turns' do
+    expect(subject).to respond_to :switch_turns
+
+  end
+
+    it 'Knows that player two has the turn after switching turns' do
     subject.add_player(:player1)
     subject.add_player(:player2)
     subject.switch_turns
     expect(subject.has_the_turn).to eq subject.players_1_and_2[0]
-
   end
 
-    xit 'Knows that player two has the turn after switching turns' do
-
-  end
-
-    xit 'Knows the current player' do
-
+    it 'Knows the current player' do
+    subject.add_player(:player1)
+    subject.add_player(:player2)
+    10.times { subject.switch_turns }
+    expect(subject.has_the_turn).to eq subject.players_1_and_2[0]
   end
 
     xit 'Knows the opponent' do
+    # known from previous test
+  end
+
+    it 'It takes turns to shoot' do
+    subject.add_player(:player1)
+    subject.add_player(:player2) 
+    subject.has_the_turn
+    expect(subject.has_the_turn).to eq :player1
+    subject.shoot
+    expect(subject.has_the_turn).to eq :player2
 
   end
 
-    xit 'It takes turns to shoot and shoots at the opponents board' do
-
-  end
+    xit 'It shoots at the opponents board' do
+    
+  end  
 
     xit 'It knows the winner' do
 
