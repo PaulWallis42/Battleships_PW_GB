@@ -15,15 +15,18 @@ end
 end
 
   it 'Can add the first player' do
-  game = Game.new
-  game.add_player(:player1)
-  expect(game.number_of_players).to eq 1
-  expect(game.players_1_and_2).to eq [:player1]
+  subject.add_player(:player1)
+  expect(subject.number_of_players).to eq 1
+  expect(subject.players_1_and_2).to eq [:player1]
   
   end
 
-  xit 'Can add the second player' do
-  
+  it 'Can add the second player' do
+  # no need to extra methods to add in class in this one.
+  subject.add_player(:player1)
+  subject.add_player(:player2)
+  expect(subject.number_of_players).to eq 2
+  expect(subject.players_1_and_2).to eq [:player1, :player2]
   end
 
   xit 'Cannot add more than two players' do
