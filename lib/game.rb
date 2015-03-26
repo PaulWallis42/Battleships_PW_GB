@@ -27,4 +27,11 @@ class Game
     @players_1_and_2 << player_name
   end
 
+  def has_the_turn
+    @players_1_and_2[0]
+  end
+
+  def switch_turns
+    @players_1_and_2.reverse
+  end
 end
