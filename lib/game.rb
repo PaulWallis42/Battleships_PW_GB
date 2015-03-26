@@ -20,6 +20,7 @@ class Game
   end
 
   def add_player(player_name)
+    fail 'You cannot add more than 2 players!' if (@players_1_and_2.length >= 2)
     @number_of_players+=1
     @players_1_and_2 << player_name
   end

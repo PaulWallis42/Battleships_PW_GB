@@ -29,8 +29,10 @@ end
   expect(subject.players_1_and_2).to eq [:player1, :player2]
   end
 
-  xit 'Cannot add more than two players' do
-  
+  it 'Cannot add more than two players' do
+  subject.add_player(:player1)
+  subject.add_player(:player2)
+  expect { subject.add_player(:player3) }.to raise_error 'You cannot add more than 2 players!'
   end
 
   xit 'Is ready to start when it has two players' do
