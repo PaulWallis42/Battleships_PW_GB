@@ -2,14 +2,21 @@ require 'game'
 
 describe Game do
 
-  
+  it 'When created is not ready'do
+  expect(subject).not_to be_ready
+end
+
+  it 'When created is not over' do
+  expect(subject).not_to be_over
+end
+
+  it 'When created has no players' do
+  expect(subject.number_of_players).to eq (0)
+end
 
 end
 
 
-
- When created is not ready
-# When created is not over
 # When created has no players
 #
 # Can add the first player
