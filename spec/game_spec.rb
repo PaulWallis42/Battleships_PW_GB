@@ -17,7 +17,7 @@ end
   it 'Can add the first player' do
   subject.add_player(:player1)
   expect(subject.number_of_players).to eq 1
-  expect(subject.players_1_and_2).to eq [:player1]
+  expect(subject.players).to eq [:player1]
 
   end
 
@@ -26,7 +26,7 @@ end
   subject.add_player(:player1)
   subject.add_player(:player2)
   expect(subject.number_of_players).to eq 2
-  expect(subject.players_1_and_2).to eq [:player1, :player2]
+  expect(subject.players).to eq [:player1, :player2]
   end
 
   it 'Cannot add more than two players' do
@@ -44,7 +44,7 @@ end
   it 'Knows that player one has the turn' do
     subject.add_player(:player1)
     subject.add_player(:player2)
-    expect(subject.has_the_turn).to eq subject.players_1_and_2[0]
+    expect(subject.has_the_turn).to eq :player1
   end
 
   it 'Can switch turns' do
@@ -52,25 +52,25 @@ end
 
   end
 
-    it 'Knows that player two has the turn after switching turns' do
+  it 'Knows that player two has the turn after switching turns' do
     subject.add_player(:player1)
     subject.add_player(:player2)
     subject.switch_turns
-    expect(subject.has_the_turn).to eq subject.players_1_and_2[0]
+    expect(subject.has_the_turn).to eq :player2
   end
 
-    it 'Knows the current player' do
+  it 'Knows the current player' do
     subject.add_player(:player1)
     subject.add_player(:player2)
     10.times { subject.switch_turns }
-    expect(subject.has_the_turn).to eq subject.players_1_and_2[0]
+    expect(subject.has_the_turn).to eq :player1
   end
 
-    xit 'Knows the opponent' do
+  xit 'Knows the opponent' do
     # known from previous test
   end
 
-    it 'It takes turns to shoot' do
+  it 'It takes turns to shoot' do
     subject.add_player(:player1)
     subject.add_player(:player2) 
     subject.has_the_turn
@@ -80,8 +80,11 @@ end
 
   end
 
-    xit 'It shoots at the opponents board' do
-    
+  it 'It shoots at the opponents board' do
+    board = double ('board')
+    subject.add_player(:player1)
+    allow(board).to receive(:shoot)
+    expect(board).to respond_to(:shoot)
   end  
 
     xit 'It knows the winner' do
