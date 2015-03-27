@@ -1,4 +1,5 @@
 class Game
+attr_reader :players, :number_of_players
 
   def initialize
     @number_of_players = 0
@@ -14,14 +15,6 @@ class Game
   def over?
   end
 
-  def number_of_players
-    @number_of_players
-  end
-
-  def players
-    @players
-  end
-
   def add_player(player_name)
     fail 'You cannot add more than 2 players!' if (@players.length >= 2)
     @number_of_players+=1
@@ -33,16 +26,22 @@ class Game
   end
 
   def switch_turns
+    if !!winner
+    raise 'the game has ended'
+    else
     @players = @players.reverse
+    end
   end
 
-  def shoot
+  def shoot # (at_coordinate)
+    # opponent.receive_shot(at_coordinate)
     switch_turns
   end
 
   def winner
     return player_two if player_one.lost?
-    player_two
+    return player_one if player_two.lost?
+    nil
   end
 
   def player_one
