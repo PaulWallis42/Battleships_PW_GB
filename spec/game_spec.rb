@@ -72,7 +72,7 @@ end
 
   it 'It takes turns to shoot' do
     subject.add_player(:player1)
-    subject.add_player(:player2) 
+    subject.add_player(:player2)
     subject.has_the_turn
     expect(subject.has_the_turn).to eq :player1
     subject.shoot
@@ -85,9 +85,12 @@ end
     subject.add_player(:player1)
     allow(board).to receive(:shoot)
     expect(board).to respond_to(:shoot)
-  end  
+  end
 
-    xit 'It knows the winner' do
+  it 'It knows the winner' do
+  
+
+
 
   end
 

@@ -38,6 +38,7 @@ class Game
 
   def shoot
     switch_turns
-    'Boom'
   end
+
+
 end
