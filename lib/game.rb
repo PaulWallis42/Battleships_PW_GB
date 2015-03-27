@@ -40,5 +40,17 @@ class Game
     switch_turns
   end
 
+  def winner
+    return player_two if player_one.lost?
+    player_two
+  end
+
+  def player_one
+    players.first
+  end
+
+  def player_two
+    players.last
+  end
 
 end

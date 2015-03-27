@@ -88,11 +88,13 @@ end
   end
 
   it 'It knows the winner' do
-  
+    player1 = double 'Player1', lost?: true
+    player2 = double 'Player2', lost?: false
+    subject.add_player(player1)
+    subject.add_player(player2)
+    expect(subject.winner).to equal player2
 
-
-
-  end
+end
 
     xit 'Cannot switch turns if there is a winner' do
 
